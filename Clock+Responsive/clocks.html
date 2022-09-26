@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clocks</title>
+    <style>
+        body {
+            height: 100vh;
+            background-color: bisque;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .clock {
+            width: 300px;
+            height: 300px;
+            border: 2px solid;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+        }
+        .dot {
+            width: 10px;
+            height: 10px;
+            background-color: black;
+            border-radius: 50%;
+            z-index: 2;
+        }
+        .arrow {
+            border-radius: 10px;
+            position:absolute;
+            top: 0;
+        }
+        .h {
+            width: 20px;
+            height: 80px;
+            background-color: brown;
+            top: calc(50% - 10px);
+            transform: rotate(20deg);
+            transform-origin: center 10px;
+            animation: round 120s linear infinite;
+        }
+
+        .m {
+            width: 10px;
+            height: 110px;
+            background-color: darkcyan;
+            top: calc(50% - 5px);
+            transform: rotate(100deg);
+            transform-origin: center 5px;
+            animation: round 100s linear infinite;
+        }
+
+        .s {
+            width: 4px;
+            height: 130px;
+            background-color: darkorchid;
+            top: calc(50% - 2px);
+            transform: rotate(200deg);
+            transform-origin: center 2px;
+            animation: round 60s linear infinite;
+        }
+        @keyframes round {
+            0% {
+                transform: rotate(0);
+            }
+            50% {
+                background-image: linear-gradient(brown, darkcyan);
+            }
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Emmet abbreviation:
+    .clock>.arrow.h+.arrow.m+.arrow.s -->
+    <div class="clock">
+        <div class="arrow h"></div>
+        <div class="arrow m"></div>
+        <div class="arrow s"></div>
+        <div class="dot"></div>
+    </div>
+</body>
+</html>
