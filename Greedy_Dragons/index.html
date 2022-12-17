@@ -32,26 +32,9 @@
         <h2 class="visually-hidden">
           Список драконов
         </h2>
-        <div class="card">
-          <img
-            src="https://static.wikia.nocookie.net/forgottenrealms/images/f/f7/Dragons_-_Eva_Widermann.jpg/revision/latest?cb=20090625000836"
-            alt="Dragon kin"
-            class="card__image"
-          />
-          <a href="#" class="card__link">
-            <h3 class="card__name"></h3>
-            Dragon
-          </a>
-          <button
-            type="button"
-            class="card__like"
-            aria-label="Ignite & tremble... brr, like a fragon"
-          >
-            <i class="fa-solid fa-fire-flame-curved"></i>
-          </button>
-        </div>
       </section>
     </main>
+
     <footer class="footer">
       <div class="container footer__container">
         <span class="copyright">
@@ -76,5 +59,28 @@
         </span>
       </div>
     </footer>
+    <template id="card-template">
+      <div class="card">
+        <img
+          src="https://static.wikia.nocookie.net/forgottenrealms/images/f/f7/Dragons_-_Eva_Widermann.jpg/revision/latest?cb=20090625000836"
+          alt="Dragon kin"
+          class="card__image"
+        />
+        <a href="#" class="card__link">
+          <h3 class="card__name">Dragon</h3>
+        </a>
+        <button
+          type="button"
+          class="card__like"
+          aria-label="Ignite & tremble... brr, like a fragon"
+        >
+          <i class="fa-solid fa-fire-flame-curved"></i>
+        </button>
+      </div>
+    </template>
+    <script src="./script/api.js" defer></script>
+    <script src="./script/cats.js" defer></script>
+    <script src="./script/card.js" defer></script>
+    <script src="./script/index.js" defer></script>
   </body>
 </html>
