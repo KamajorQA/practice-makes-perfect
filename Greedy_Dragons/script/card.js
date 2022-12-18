@@ -16,9 +16,3 @@ class Card {
     return this.element;
   }
 }
-
-const card = new Card(cats[0]);
-
-// const template = document
-//   .querySelector("#card-template")
-//   .content.querySelector(".card");
