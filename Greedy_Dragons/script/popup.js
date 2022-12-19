@@ -21,5 +21,4 @@ class Popup {
   }
 }
 
-// const popups = new Popup("popup-add-items");
-// popups.open();
+

@@ -14,8 +14,4 @@
 @import url("./blocks/popup.css");
 @import url("./blocks/form.css");
 
-body {
-  font-family: sans-serif;
-  background-color: #ecede7;
-  color: #99a9cd;
-}
+

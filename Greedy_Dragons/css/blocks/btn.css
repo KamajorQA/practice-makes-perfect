@@ -13,4 +13,9 @@
   color: var(--text-light-color);
   cursor: pointer;
   border: none;
+  transition: background-color 300ms ease-in;
+}
+
+.btn:hover {
+  background-color: rgba(255,158,0,1);
 }
