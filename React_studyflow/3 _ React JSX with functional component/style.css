@@ -1,0 +1,13 @@
+.app {
+  display: flex;
+  height: 100vh;
+  align-items: center;
+  justify-content: center;
+}
+
+.teal-btn {
+  color: white;
+  background-color: teal;
+  transition: all 0.5s ease;
+  border-radius: 5px;
+}
