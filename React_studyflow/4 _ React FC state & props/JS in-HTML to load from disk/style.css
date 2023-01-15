@@ -1,0 +1,15 @@
+.app {
+  display: flex;
+  height: 100vh;
+  align-items: center;
+  justify-content: center;
+}
+
+.orange-btn {
+  color: white;
+  background-color: orange;
+  transition: all 1.5s ease;
+  border-radius: 5px;
+  border: none;
+  font-size: 2rem;
+}

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./style.css" />
+    <title>React JSX button color change</title>
+  </head>
+  <body>
+    <div id="app"></div>
+    <script
+      src="https://unpkg.com/react@18/umd/react.development.js"
+      crossorigin
+    ></script>
+    <script
+      src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"
+      crossorigin
+    ></script>
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+    <script type="text/babel">
+      const App = ({ initialButtonText, initialButtonClasses }) => {
+        const [buttonText, setButtonText] = React.useState(initialButtonText);
+        const [buttonClasses, setButtonClasses] =
+          React.useState(initialButtonClasses);
+        const handlerButton = () => {
+          setButtonText('Hello from React');
+          setButtonClasses('orange-btn');
+        };
+        return (
+          <div className="app">
+            <button className={buttonClasses} onClick={handlerButton}>
+              {buttonText}
+            </button>
+          </div>
+        );
+      };
+
+      const container = document.getElementById('app');
+      const root = ReactDOM.createRoot(container);
+      root.render(<App initialButtonText="Click me" initialButtonClasses="" />);
+    </script>
+  </body>
+</html>
