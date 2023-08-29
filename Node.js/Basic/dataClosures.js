@@ -25,5 +25,5 @@ const heisenberg = createPlayer('Heisenberg');
 
 const ifrit = createPlayer('Ifrit');
 
-module.exports = heisenberg;
-// module.exports = ifrit;
+module.exports.heisenberg = heisenberg;
+module.exports.ifrit = ifrit;

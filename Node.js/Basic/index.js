@@ -1,16 +1,16 @@
 const chalk = require('chalk');
 
-const heisenberg = require('./dataClosures');
+const dataClosures = require('./dataClosures');
 
-const ifrit = require('./dataClosures');
+const { heisenberg, ifrit } = dataClosures;
 
 console.log(chalk.blue('Hello, Node.js!'));
 
 heisenberg.showScore();
 
-// ifrit.increment();
-// ifrit.increment();
-// ifrit.showScore();
+ifrit.increment();
+ifrit.increment();
+ifrit.showScore();
 
 heisenberg.decrement();
 heisenberg.sayMyName();
