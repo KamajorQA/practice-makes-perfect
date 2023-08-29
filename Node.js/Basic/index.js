@@ -1,22 +1,15 @@
-const chalk = require('chalk');
+// модуль http отвечает за создание веб-серверов
+const http = require('http');
 
-const dataClosures = require('./dataClosures');
+// создание инстанса сервера (экземпляра класса Server)
+const server = http.createServer((request, response) => {
+  //метод end() у параметра ServerResponse завершает ответ сервера
+  response.end('<h1>Hello Node.js</h1>');
+});
 
-const { heisenberg, ifrit } = dataClosures;
-
-console.log(chalk.blue('Hello, Node.js!'));
-
-heisenberg.showScore();
-
-ifrit.increment();
-ifrit.increment();
-ifrit.showScore();
-
-heisenberg.decrement();
-heisenberg.sayMyName();
-heisenberg.showScore();
-
-ifrit.decrement();
-console.log(`${ifrit.sayMyName()}'s score now is: ${ifrit.showScore()}`);
-
-console.log(__filename);
+// метод listen() запускает прослушку подключений к серверу
+//первым параметром передает порт, а вторым - коллбэк
+// с возвратом информации, которая будет написана при запуске сервера
+server.listen(3000, () => {
+  console.log('Server has been started...');
+});
