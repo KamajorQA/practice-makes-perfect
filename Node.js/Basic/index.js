@@ -1,16 +1,44 @@
 // модуль http отвечает за создание веб-серверов
 const http = require('http');
 
+const fs = require('fs');
+const path = require('path');
+
 // создание инстанса сервера (экземпляра класса Server)
 const server = http.createServer((request, response) => {
-  //прямое указание статуса ответа в Header'е
-  // первый параметр - статус код, второй параметр - объект headers
-  response.writeHead(200, {
-    'Content-Type': 'text/html',
-  });
+  // определение адреса, по которому приходит запрос
+  console.log(request.url);
 
-  //метод end() у параметра ServerResponse завершает ответ сервера
-  response.end('<h1>Hello Node.js</h1>');
+  if (request.url === '/') {
+    fs.readFile(path.join(__dirname, 'public', 'index.html'), (err, data) => {
+      if (err) throw err;
+
+      //прямое указание статуса ответа в Header'е
+      // первый параметр - статус код, второй параметр - объект headers
+      response.writeHead(200, {
+        'Content-Type': 'text/html',
+      });
+
+      //метод end() у параметра ServerResponse завершает ответ сервера
+      // и возвращает данные, переданные в качестве параметра
+      response.end(data);
+    });
+  } else if (request.url === '/contacts') {
+    fs.readFile(
+      path.join(__dirname, 'public', 'contacts.html'),
+      (err, data) => {
+        if (err) {
+          throw err;
+        }
+
+        response.writeHead(200, {
+          'Content-Type': 'text/html',
+        });
+
+        response.end(data);
+      }
+    );
+  }
 });
 
 // метод listen() запускает прослушку подключений к серверу
