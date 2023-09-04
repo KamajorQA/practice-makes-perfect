@@ -9,36 +9,50 @@ const server = http.createServer((request, response) => {
   // определение адреса, по которому приходит запрос
   console.log(request.url);
 
-  if (request.url === '/') {
-    fs.readFile(path.join(__dirname, 'public', 'index.html'), (err, data) => {
-      if (err) throw err;
+  // создаем универсальный путь до файла
+  // используя тернарный оператор по полученному запросу
+  let filePath = path.join(
+    __dirname,
+    'public',
+    request.url === '/' ? 'index.html' : request.url
+  );
 
-      //прямое указание статуса ответа в Header'е
+  // получаем расширение файла, расположенного по адресу текущей строки запроса
+  const ext = path.extname(filePath);
+
+  // проверка наличия расширения у найденного файла и лобавление расширения при его отсутствии
+  if (!ext) {
+    filePath += '.html';
+  }
+
+  fs.readFile(filePath, (error, content) => {
+    if (!!error) {
+      fs.readFile(
+        path.join(__dirname, 'public', 'NotFound.html'),
+        (err, errorPage) => {
+          if (err) {
+            response.writeHead(500);
+            response.end('Server error');
+          } else {
+            response.writeHead(200, {
+              'Content-Type': 'text/html',
+            });
+            response.end(errorPage);
+          }
+        }
+      );
+    } else {
+      // указание заголовков ответа сервера
       // первый параметр - статус код, второй параметр - объект headers
       response.writeHead(200, {
         'Content-Type': 'text/html',
       });
 
       //метод end() у параметра ServerResponse завершает ответ сервера
-      // и возвращает данные, переданные в качестве параметра
-      response.end(data);
-    });
-  } else if (request.url === '/contacts') {
-    fs.readFile(
-      path.join(__dirname, 'public', 'contacts.html'),
-      (err, data) => {
-        if (err) {
-          throw err;
-        }
-
-        response.writeHead(200, {
-          'Content-Type': 'text/html',
-        });
-
-        response.end(data);
-      }
-    );
-  }
+      // и возвращает данные (страницу), переданные в качестве параметра
+      response.end(content);
+    }
+  });
 });
 
 // метод listen() запускает прослушку подключений к серверу
