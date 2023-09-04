@@ -20,7 +20,26 @@ const server = http.createServer((request, response) => {
   // получаем расширение файла, расположенного по адресу текущей строки запроса
   const ext = path.extname(filePath);
 
-  // проверка наличия расширения у найденного файла и лобавление расширения при его отсутствии
+  // Content-Type задаваемый по-умолчанию
+  let contentType = 'text/html';
+
+  // проверка типа возвращаемого контента на основе расширения полученного по адресу запроса файла
+  // на основании чего меняется Content-Type, который передается затем с Headers ответа от сервера
+  switch (ext) {
+    case '.css': {
+      contentType = 'text/css';
+      break;
+    }
+    case '.js': {
+      contentType = 'text/javascript';
+      break;
+    }
+    default: {
+      contentType = 'text/html';
+    }
+  }
+
+  // проверка наличия расширения у найденного файла и добавление расширения .html при его отсутствии
   if (!ext) {
     filePath += '.html';
   }
@@ -35,7 +54,7 @@ const server = http.createServer((request, response) => {
             response.end('Server error');
           } else {
             response.writeHead(200, {
-              'Content-Type': 'text/html',
+              'Content-Type': contentType,
             });
             response.end(errorPage);
           }
@@ -45,7 +64,7 @@ const server = http.createServer((request, response) => {
       // указание заголовков ответа сервера
       // первый параметр - статус код, второй параметр - объект headers
       response.writeHead(200, {
-        'Content-Type': 'text/html',
+        'Content-Type': contentType,
       });
 
       //метод end() у параметра ServerResponse завершает ответ сервера
