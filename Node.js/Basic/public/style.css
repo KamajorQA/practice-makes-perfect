@@ -1,0 +1,21 @@
+nav > a {
+  font-size: 2rem;
+  margin-right: 15px;
+}
+
+body {
+  background-color: bisque;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+}
+
+img {
+  max-height: 25rem;
+}
+
+.error {
+  color: brown;
+}
