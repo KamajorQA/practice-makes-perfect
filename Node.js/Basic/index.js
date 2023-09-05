@@ -74,9 +74,14 @@ const server = http.createServer((request, response) => {
   });
 });
 
+// проверка наличия у зпаущенного сервера открытого порта
+// (через системную переменную PORT у объекта process.env)
+// и задание его по-умолчанию при остутствии
+const PORT = process.env.PORT || 3000;
+
 // метод listen() запускает прослушку подключений к серверу
 //первым параметром передает порт, а вторым - коллбэк
 // с возвратом информации, которая будет написана при запуске сервера
-server.listen(3000, () => {
-  console.log('Server has been started...');
+server.listen(PORT, () => {
+  console.log(`Server has been started on port ${PORT}...`);
 });
