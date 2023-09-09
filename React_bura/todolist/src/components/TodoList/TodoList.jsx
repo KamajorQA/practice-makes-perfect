@@ -1,7 +1,12 @@
 import TodoListItem from '../TodoListItem/TodoListItem';
 import './todoList.css';
 
-const TodoList = ({ todos, onDelete }) => {
+const TodoList = ({
+  todos,
+  handleDeleteItem,
+  handleToggleImportant,
+  handleToggleDone,
+}) => {
   return (
     <ul className="list-group todo-list">
       {todos.map((item) => {
@@ -10,7 +15,9 @@ const TodoList = ({ todos, onDelete }) => {
           <li key={id} className="list-group-item">
             <TodoListItem
               {...itemProps}
-              handleDeleteItem={() => onDelete(id)}
+              handleDeleteItem={() => handleDeleteItem(id)}
+              handleToggleImportant={() => handleToggleImportant(id)}
+              handleToggleDone={() => handleToggleDone(id)}
             />
           </li>
         );

@@ -26,8 +26,14 @@ class TodoListItem extends React.Component {
   }
 
   render() {
-    const { label, handleDeleteItem } = this.props;
-    const { done, important } = this.state;
+    const {
+      label,
+      handleDeleteItem,
+      handleToggleImportant,
+      handleToggleDone,
+      done,
+      important,
+    } = this.props;
 
     let classNames = 'todo-list-item';
     if (!!done) {
@@ -39,14 +45,14 @@ class TodoListItem extends React.Component {
 
     return (
       <span className={classNames}>
-        <span className="todo-list-item-label" onClick={this.handleLabelClick}>
+        <span className="todo-list-item-label" onClick={handleToggleDone}>
           {label}
         </span>
         <div className="icon-group">
           <button
             type="button"
             className="btn btn-outline-success btn-sm"
-            onClick={this.handleMarkClick}
+            onClick={handleToggleImportant}
           >
             <Lightning className="icon" />
           </button>
