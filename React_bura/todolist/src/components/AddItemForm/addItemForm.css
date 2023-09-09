@@ -1,0 +1,9 @@
+.add-item-form {
+  margin-top: 1rem;
+  display: flex;
+}
+
+.form {
+  flex: 1;
+  margin-right: 0.5em;
+}

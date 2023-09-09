@@ -4,25 +4,58 @@ import { ReactComponent as Trash } from '../../assets/icons/Trash.svg';
 import './todoListItem.css';
 
 class TodoListItem extends React.Component {
-  render() {
-    const { label, important = false } = this.props;
+  constructor() {
+    super();
 
-    const itemStyle = {
-      color: important ? 'steelblue' : 'black',
-      fontWeight: important ? 'bold' : 'normal',
+    this.state = {
+      done: false,
+      important: false,
     };
 
+    this.handleLabelClick = () => {
+      this.setState((state) => {
+        return { done: !state.done };
+      });
+    };
+
+    this.handleMarkClick = () => {
+      this.setState((state) => {
+        return { important: !state.important };
+      });
+    };
+  }
+
+  render() {
+    const { label, handleDeleteItem } = this.props;
+    const { done, important } = this.state;
+
+    let classNames = 'todo-list-item';
+    if (!!done) {
+      classNames += ' done';
+    }
+    if (!!important) {
+      classNames += ' important';
+    }
+
     return (
-      <span className="todo-list-item ">
-        <span className="todo-list-item-label" style={itemStyle}>
+      <span className={classNames}>
+        <span className="todo-list-item-label" onClick={this.handleLabelClick}>
           {label}
         </span>
         <div className="icon-group">
-          <button type="button" className="btn btn-outline-success btn-sm">
+          <button
+            type="button"
+            className="btn btn-outline-success btn-sm"
+            onClick={this.handleMarkClick}
+          >
             <Lightning className="icon" />
           </button>
 
-          <button type="button" className="btn btn-outline-danger btn-sm">
+          <button
+            type="button"
+            className="btn btn-outline-danger btn-sm"
+            onClick={handleDeleteItem}
+          >
             <Trash className="icon" />
           </button>
         </div>
