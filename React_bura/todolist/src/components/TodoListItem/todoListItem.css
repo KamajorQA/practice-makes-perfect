@@ -1,0 +1,39 @@
+.todo-list-item {
+  font-size: 1.25rem;
+  display: flex;
+  justify-content: space-between;
+}
+
+.todo-list-item button {
+  width: 35px;
+  margin: 3px;
+  display: flex;
+  align-items: center;
+}
+
+.icon-group {
+  display: flex;
+  align-items: center;
+}
+
+.icon {
+  max-height: 20px;
+  fill: seagreen;
+}
+
+.todo-list-item-label {
+  margin: 0 1.25rem;
+  line-height: 35px;
+  cursor: pointer;
+  user-select: none;
+  overflow: hidden;
+}
+
+.todo-list-item.done .todo-list-item-label {
+  text-decoration: line-through;
+}
+
+.todo-list-item.important .todo-list-item-label {
+  font-weight: bold;
+  color: steelblue;
+}
