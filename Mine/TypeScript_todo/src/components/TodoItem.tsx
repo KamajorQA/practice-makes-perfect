@@ -1,13 +1,23 @@
-import { ITodo } from '../types/data';
+import { IHandleTodo, ITodo } from '../types/data';
 
-interface ITodoItem extends ITodo {}
+interface ITodoItem extends ITodo, IHandleTodo {}
 
-const TodoItem = ({ id, title, completed }: ITodoItem) => {
+const TodoItem = ({
+  id,
+  title,
+  completed,
+  removeTodo,
+  toggleTodo,
+}: ITodoItem) => {
   return (
-    <div>
-      <input type="checkbox" checked={completed}></input>
+    <div className="border-b-2 flex gap-5 justify-between border-sky-700">
+      <input
+        type="checkbox"
+        checked={completed}
+        onChange={() => toggleTodo(id)}
+      ></input>
       {title}
-      <button>X</button>
+      <button onClick={() => removeTodo(id)}>&#x2718;</button>
     </div>
   );
 };

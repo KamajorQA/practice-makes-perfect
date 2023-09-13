@@ -1,16 +1,21 @@
-import { ITodo } from '../types/data';
+import { IHandleTodo, ITodo } from '../types/data';
 import { TodoItem } from './TodoItem';
 
-interface ITodoListProps {
+interface ITodoListProps extends IHandleTodo {
   items: ITodo[];
 }
 
 const TodoList: React.FC<ITodoListProps> = (props) => {
-  const { items } = props;
+  const { items, removeTodo, toggleTodo } = props;
   return (
-    <div>
+    <div className="max-w-xl">
       {items.map((el) => (
-        <TodoItem key={el.id} {...el} />
+        <TodoItem
+          key={el.id}
+          {...el}
+          removeTodo={removeTodo}
+          toggleTodo={toggleTodo}
+        />
       ))}
     </div>
   );
