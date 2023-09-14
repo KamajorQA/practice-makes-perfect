@@ -45,6 +45,7 @@ function App() {
 
   return (
     <div className="app">
+      <h1>Todo List</h1>
       <LogoSpin />
       <AddForm text={text} handleInputText={setText} handleAddItem={addTodo} />
 
