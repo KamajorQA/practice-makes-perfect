@@ -1,0 +1,22 @@
+.logoSpin {
+  height: 7vmin;
+  pointer-events: none;
+  position: fixed;
+  top: 1rem;
+  left: 1rem;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .logoSpin {
+    animation: logoSpin-spin infinite 20s linear;
+  }
+}
+
+@keyframes logoSpin-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
