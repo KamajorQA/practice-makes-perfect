@@ -1,59 +1,27 @@
 import { useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { addTodo } from '../../store/todoSlice';
 import LogoSpin from '../LogoSpin/LogoSpin';
-import TodoItem from '../TodoItem/TodoItem';
-import './App.css';
 import TodoList from '../TodoList/TodoList';
 import AddForm from '../AddForm/AddForm';
+import './App.css';
 
 function App() {
-  const [todos, setTodos] = useState([]);
   const [text, setText] = useState('');
+  const dispatch = useDispatch();
 
-  const addTodo = () => {
-    if (text.trim().length !== 0) {
-      setTodos([
-        ...todos,
-        {
-          id: new Date().toISOString(),
-          text,
-          completed: false,
-        },
-      ]);
-
-      setText('');
-    }
-  };
-
-  const removeTodo = (todoId) => {
-    setTodos(todos.filter((el) => el.id !== todoId));
-  };
-
-  const toggleTodoCompleted = (todoId) => {
-    setTodos(
-      todos.map((item) => {
-        if (item.id !== todoId) {
-          return item;
-        }
-
-        return {
-          ...item,
-          completed: !item.completed,
-        };
-      })
-    );
+  const addTask = () => {
+    dispatch(addTodo({ text }));
+    setText('');
   };
 
   return (
     <div className="app">
-      <h1>Todo List</h1>
+      <h2>Todo List</h2>
       <LogoSpin />
-      <AddForm text={text} handleInputText={setText} handleAddItem={addTodo} />
+      <AddForm text={text} handleInputText={setText} handleAddItem={addTask} />
 
-      <TodoList
-        todos={todos}
-        removeTodo={removeTodo}
-        toggleTodoCompleted={toggleTodoCompleted}
-      />
+      <TodoList />
     </div>
   );
 }
