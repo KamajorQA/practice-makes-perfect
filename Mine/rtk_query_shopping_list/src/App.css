@@ -1,0 +1,27 @@
+.app {
+  background-color: bisque;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: teal;
+}
+
+h1 {
+  opacity: 0.8;
+  font-style: italic;
+}
+
+ul {
+  list-style: circle;
+  padding: 0;
+  text-align: center;
+}
+
+ul > li {
+  color: seagreen;
+  border-bottom: 1px solid teal;
+  margin: 5px;
+  padding: 5px;
+}
